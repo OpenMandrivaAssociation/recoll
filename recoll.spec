@@ -1,0 +1,64 @@
+Summary:	Desktop full text search tool with a qt gui
+Name:           recoll
+Version:        1.7.5
+Release:        %mkrel 2
+License:	GPL
+Group:          Databases
+URL:            http://www.recoll.org/
+Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-configure.patch
+BuildRequires:	libxapian-devel
+BuildRequires:	libfam-devel
+BuildRequires:	libqt-devel	>= 3.3.7
+BuildRequires:	libaspell-devel
+Requires:	xapian
+BuildRoot:      %{_tmppath}/%{name}-%{version}--buildroot
+
+%description
+Recoll is a personal full text search tool for Unix/Linux.
+It is based on the very strong Xapian backend, for which 
+it provides an easy to use, feature-rich, easy administration, 
+QT graphical interface.
+
+%prep
+%setup -q 
+%patch0 -p0
+%patch1 -p0
+
+%build
+%configure2_5x \
+	--with-fam \
+	--with-aspell
+
+%make
+
+%install
+[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+
+%makeinstall
+
+%clean
+[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+
+%files
+%defattr(644,root,root,755)
+%doc %{_datadir}/%{name}/doc
+%attr(755,root,root) %{_bindir}/%{name}*
+%{_datadir}/applications/recoll.desktop
+%{_datadir}/icons/hicolor/48x48/apps/recoll.png
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/examples
+%dir %{_datadir}/%{name}/filters
+%dir %{_datadir}/%{name}/images
+%dir %{_datadir}/%{name}/translations
+%{_datadir}/%{name}/examples/mime*
+%{_datadir}/%{name}/examples/*.conf
+%attr(755,root,root) %{_datadir}/%{name}/examples/rclmon.sh
+%attr(755,root,root) %{_datadir}/%{name}/filters/rc*
+%{_datadir}/%{name}/images/*png
+%{_mandir}/man1/recoll*
+%{_mandir}/man5/recoll*
+%{_datadir}/%{name}/translations/*.qm
+
+
