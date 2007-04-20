@@ -1,12 +1,11 @@
 Summary:	Desktop full text search tool with a qt gui
 Name:           recoll
-Version:        1.7.5
-Release:        %mkrel 2
+Version:        1.8.1
+Release:        %mkrel 1
 License:	GPL
 Group:          Databases
 URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-configure.patch
 BuildRequires:	libxapian-devel
 BuildRequires:	libfam-devel
@@ -23,7 +22,6 @@ QT graphical interface.
 
 %prep
 %setup -q 
-%patch0 -p0
 %patch1 -p0
 
 %build
@@ -36,7 +34,10 @@ QT graphical interface.
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-%makeinstall
+%makeinstall_std
+desktop-file-install --vendor="" \
+	--add-category="X-MandrivaLinux-MoreApplications-Databases" \
+	--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
@@ -45,8 +46,8 @@ QT graphical interface.
 %defattr(644,root,root,755)
 %doc %{_datadir}/%{name}/doc
 %attr(755,root,root) %{_bindir}/%{name}*
-%{_datadir}/applications/recoll.desktop
-%{_datadir}/icons/hicolor/48x48/apps/recoll.png
+%{_datadir}/applications/recoll-searchgui.desktop
+%{_datadir}/icons/hicolor/48x48/apps/recoll-searchgui.png
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/examples
 %dir %{_datadir}/%{name}/filters
@@ -56,9 +57,8 @@ QT graphical interface.
 %{_datadir}/%{name}/examples/*.conf
 %attr(755,root,root) %{_datadir}/%{name}/examples/rclmon.sh
 %attr(755,root,root) %{_datadir}/%{name}/filters/rc*
+%{_datadir}/%{name}/filters/xdg-open
 %{_datadir}/%{name}/images/*png
 %{_mandir}/man1/recoll*
 %{_mandir}/man5/recoll*
 %{_datadir}/%{name}/translations/*.qm
-
-
