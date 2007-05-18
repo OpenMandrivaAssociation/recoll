@@ -1,13 +1,13 @@
 Summary:	Desktop full text search tool with a qt gui
 Name:           recoll
 Version:        1.8.1
-Release:        %mkrel 1
+Release:        %mkrel 2
 License:	GPL
 Group:          Databases
 URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
 Patch1:		%{name}-configure.patch
-BuildRequires:	libxapian-devel
+BuildRequires:	libxapian-devel >= 1.0.0
 BuildRequires:	libfam-devel
 BuildRequires:	libqt-devel	>= 3.3.7
 BuildRequires:	libaspell-devel
