@@ -7,6 +7,7 @@ Group:          Databases
 URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
 Patch1:		%{name}-configure.patch
+Patch2:		%{name}-1.8.1-xapian-stemmer.patch
 BuildRequires:	libxapian-devel >= 1.0.0
 BuildRequires:	libfam-devel
 BuildRequires:	libqt-devel	>= 3.3.7
@@ -23,6 +24,7 @@ QT graphical interface.
 %prep
 %setup -q 
 %patch1 -p0
+%patch2 -p0
 
 %build
 %configure2_5x \
