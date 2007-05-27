@@ -23,9 +23,13 @@ QT graphical interface.
 %setup -q 
 
 %build
+chmod 755 configure
+autoreconf --force
+
 %configure2_5x \
 	--with-fam \
-	--with-aspell
+	--with-aspell \
+	--with-inotify
 
 %make
 
