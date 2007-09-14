@@ -1,7 +1,7 @@
 Summary:	Desktop full text search tool with a qt gui
 Name:           recoll
-Version:        1.8.2
-Release:        %mkrel 3
+Version:        1.9.0
+Release:        %mkrel 1
 License:	GPL
 Group:          Databases
 URL:            http://www.recoll.org/
@@ -37,9 +37,6 @@ autoreconf --force
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %makeinstall_std
-desktop-file-install --vendor="" \
-	--add-category="X-MandrivaLinux-MoreApplications-Databases" \
-	--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
@@ -48,8 +45,8 @@ desktop-file-install --vendor="" \
 %defattr(644,root,root,755)
 %doc %{_datadir}/%{name}/doc
 %attr(755,root,root) %{_bindir}/%{name}*
-%{_datadir}/applications/recoll-searchgui.desktop
-%{_datadir}/icons/hicolor/48x48/apps/recoll-searchgui.png
+%{_datadir}/applications/*.desktop
+%{_datadir}/icons/hicolor/*/apps/*.png
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/examples
 %dir %{_datadir}/%{name}/filters
