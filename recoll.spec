@@ -1,8 +1,8 @@
 Summary:	Desktop full text search tool with a qt gui
 Name:           recoll
-Version:        1.9.0
+Version:        1.10.0
 Release:        %mkrel 1
-License:	GPL
+License:	GPLv2+
 Group:          Databases
 URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
