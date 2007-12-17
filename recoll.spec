@@ -11,7 +11,6 @@ BuildRequires:	libfam-devel
 BuildRequires:	libqt-devel	>= 3.3.7
 BuildRequires:	libaspell-devel
 Requires:	xapian
-BuildRoot:      %{_tmppath}/%{name}-%{version}--buildroot
 
 %description
 Recoll is a personal full text search tool for Unix/Linux.
