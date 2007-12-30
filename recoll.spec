@@ -1,4 +1,4 @@
-Summary:	Desktop full text search tool with a qt gui
+Summary:	Desktop full text search tool with a Qt gui
 Name:           recoll
 Version:        1.10.0
 Release:        %mkrel 2
