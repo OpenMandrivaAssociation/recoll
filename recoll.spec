@@ -4,6 +4,7 @@ Version:        1.10.1
 Release:        %mkrel 1
 License:	GPLv2+
 Group:          Databases
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
 BuildRequires:	libxapian-devel >= 1.0.5
