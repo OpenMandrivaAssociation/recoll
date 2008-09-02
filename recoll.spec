@@ -8,7 +8,7 @@ URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
 BuildRequires:	libxapian-devel >= 1.0.5
 BuildRequires:	libfam-devel
-BuildRequires:	libqt-devel	>= 3.3.7
+BuildRequires:	libqt4-devel
 BuildRequires:	libaspell-devel
 Requires:	xapian-core
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
