@@ -1,10 +1,9 @@
 Summary:	Desktop full text search tool with a Qt gui
 Name:           recoll
-Version:        1.10.2
-Release:        %mkrel 2
+Version:        1.10.5
+Release:        %mkrel 1
 License:	GPLv2+
 Group:          Databases
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
 BuildRequires:	libxapian-devel >= 1.0.5
@@ -12,6 +11,7 @@ BuildRequires:	libfam-devel
 BuildRequires:	libqt-devel	>= 3.3.7
 BuildRequires:	libaspell-devel
 Requires:	xapian-core
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Recoll is a personal full text search tool for Unix/Linux.
@@ -23,9 +23,6 @@ QT graphical interface.
 %setup -q 
 
 %build
-chmod 755 configure
-autoreconf --force
-
 %configure2_5x \
 	--with-fam \
 	--with-aspell \
