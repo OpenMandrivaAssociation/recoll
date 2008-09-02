@@ -6,6 +6,7 @@ License:	GPLv2+
 Group:          Databases
 URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-1.10.5-gcc43.patch
 BuildRequires:	libxapian-devel >= 1.0.5
 BuildRequires:	libfam-devel
 BuildRequires:	libqt4-devel
@@ -21,6 +22,7 @@ QT graphical interface.
 
 %prep
 %setup -q 
+%patch0 -p1
 
 %build
 %configure2_5x \
