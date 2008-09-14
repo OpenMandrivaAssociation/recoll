@@ -1,6 +1,6 @@
 Summary:	Desktop full text search tool with a Qt gui
 Name:           recoll
-Version:        1.10.5
+Version:        1.10.6
 Release:        %mkrel 1
 License:	GPLv2+
 Group:          Databases
