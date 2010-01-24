@@ -1,6 +1,6 @@
 Summary:	Desktop full text search tool with a Qt gui
 Name:           recoll
-Version:        1.13.00
+Version:        1.13.01
 Release:        %mkrel 1
 License:	GPLv2+
 Group:          Databases
@@ -21,6 +21,17 @@ It is based on the very strong Xapian backend, for which
 it provides an easy to use, feature-rich, easy administration, 
 QT graphical interface.
 
+%package -n kio-%{name}
+Summary:	Kioslave for %{name}
+Group:		Graphical desktop/KDE
+BuildRequires:	cmake
+BuildRequires:	kdelibs4-devel
+Requires:	%{name} = %{version}-%{release}
+
+%description -n kio-%{name}
+Kioslave for %{name} . Enables to perform querries and extract 
+results in konqueror and dolphin.
+
 %prep
 %setup -q
 %patch1 -p1
@@ -33,10 +44,19 @@ QT graphical interface.
 
 %make
 
+pushd  kde/kioslave/recoll
+%cmake
+%make
+popd
+
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %makeinstall_std
+
+pushd  kde/kioslave/recoll/build
+%makeinstall_std
+popd
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
@@ -62,3 +82,11 @@ QT graphical interface.
 %{_mandir}/man1/recoll*
 %{_mandir}/man5/recoll*
 %{_datadir}/%{name}/translations/*.qm
+
+%files -n kio-%{name}
+%defattr(-,root,root)
+%{_kde_libdir}/kde4/kio_recoll.so
+%{_kde_datadir}/apps/kio_recoll/help.html
+%{_kde_datadir}/apps/kio_recoll/welcome.html
+%{_kde_datadir}/kde4/services/recoll.protocol
+%{_kde_datadir}/kde4/services/recollf.protocol
