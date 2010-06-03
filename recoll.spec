@@ -1,7 +1,7 @@
 Summary:	Desktop full text search tool with a Qt gui
 Name:           recoll
 Version:        1.13.02
-Release:        %mkrel 1
+Release:        %mkrel 2
 License:	GPLv2+
 Group:          Databases
 URL:            http://www.recoll.org/
@@ -40,11 +40,15 @@ results in konqueror and dolphin.
 %configure2_5x \
 	--with-fam \
 	--with-aspell \
-	--with-inotify
+	--with-inotify \
+	--with-gui
 
 %make
 
 pushd  kde/kioslave/recoll
+# (tpg) fix missing binaries
+# https://qa.mandriva.com/show_bug.cgi?id=59633
+sed -i -e 's/--without-gui//g' CMakeLists.txt
 %cmake
 %make
 popd
