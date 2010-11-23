@@ -6,7 +6,6 @@ License:	GPLv2+
 Group:          Databases
 URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.gz
-Patch1:		recoll-1.12.4-optflags.patch
 Patch0:		recoll-1.14.2-fix-link.patch
 BuildRequires:	libxapian-devel >= 1.0.5
 BuildRequires:	libfam-devel
@@ -37,7 +36,6 @@ results in konqueror and dolphin.
 %prep
 %setup -q
 %patch0 -p0
-#%patch1 -p1
 
 %build
 %configure2_5x \
