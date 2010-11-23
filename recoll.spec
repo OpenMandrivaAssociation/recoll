@@ -1,16 +1,18 @@
 Summary:	Desktop full text search tool with a Qt gui
 Name:           recoll
-Version:        1.13.02
-Release:        %mkrel 2
+Version:        1.14.2
+Release:        %mkrel 1
 License:	GPLv2+
 Group:          Databases
 URL:            http://www.recoll.org/
-Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.bz2
+Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.gz
 Patch1:		recoll-1.12.4-optflags.patch
+Patch0:		recoll-1.14.2-fix-link.patch
 BuildRequires:	libxapian-devel >= 1.0.5
 BuildRequires:	libfam-devel
 BuildRequires:	libqt4-devel
 BuildRequires:	libaspell-devel
+BuildRequires:	kdelibs4-devel
 Requires:	xapian-core
 Conflicts:	beagle
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -34,14 +36,14 @@ results in konqueror and dolphin.
 
 %prep
 %setup -q
-%patch1 -p1
+%patch0 -p0
+#%patch1 -p1
 
 %build
 %configure2_5x \
 	--with-fam \
 	--with-aspell \
-	--with-inotify \
-	--with-gui
+	--with-inotify
 
 %make
 
@@ -71,6 +73,7 @@ popd
 %attr(755,root,root) %{_bindir}/%{name}*
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*.png
+%{_datadir}/pixmaps/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/examples
 %dir %{_datadir}/%{name}/filters
