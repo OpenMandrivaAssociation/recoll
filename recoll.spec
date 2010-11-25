@@ -6,7 +6,7 @@ License:	GPLv2+
 Group:          Databases
 URL:            http://www.recoll.org/
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.gz
-Patch0:		recoll-1.14.2-fix-link.patch
+Patch0:		recoll-1.14.3-fix-link.patch
 BuildRequires:	libxapian-devel >= 1.0.5
 BuildRequires:	libfam-devel
 BuildRequires:	libqt4-devel
