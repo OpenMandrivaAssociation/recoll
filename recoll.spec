@@ -72,21 +72,9 @@ popd
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/pixmaps/*
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/examples
-%dir %{_datadir}/%{name}/filters
-%dir %{_datadir}/%{name}/images
-%dir %{_datadir}/%{name}/translations
-%{_datadir}/%{name}/examples/mime*
-%{_datadir}/%{name}/examples/*.conf
-%{_datadir}/%{name}/examples/fields
-%attr(755,root,root) %{_datadir}/%{name}/examples/rclmon.sh
-%attr(755,root,root) %{_datadir}/%{name}/filters/rc*
-%attr(755,root,root) %{_datadir}/%{name}/filters/xdg-open
-%{_datadir}/%{name}/images/*png
+%{_datadir}/%{name}
 %{_mandir}/man1/recoll*
 %{_mandir}/man5/recoll*
-%{_datadir}/%{name}/translations/*.qm
 
 %files -n kio-%{name}
 %defattr(-,root,root)
