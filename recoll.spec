@@ -38,6 +38,7 @@ results in konqueror and dolphin.
 %patch0 -p0
 
 %build
+export CFLAGS="%optflags -fPIC"
 %configure2_5x \
 	--with-fam \
 	--with-aspell \
