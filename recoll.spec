@@ -38,7 +38,7 @@ results in konqueror and dolphin.
 %patch0 -p0
 
 %build
-export CXXFLAGS="%optflags -fPIC"
+export QMAKE=%{qt4bin}/qmake
 %configure2_5x \
 	--with-fam \
 	--with-aspell \
@@ -46,20 +46,14 @@ export CXXFLAGS="%optflags -fPIC"
 
 %make
 
-pushd  kde/kioslave/recoll
-# (tpg) fix missing binaries
-# https://qa.mandriva.com/show_bug.cgi?id=59633
-sed -i -e 's/--without-gui//g' CMakeLists.txt
-%cmake
-%make
-popd
-
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %makeinstall_std
 
-pushd  kde/kioslave/recoll/build
+pushd kde/kioslave/kio_recoll
+%cmake_kde4
+%make
 %makeinstall_std
 popd
 
