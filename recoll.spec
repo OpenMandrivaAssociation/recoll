@@ -1,80 +1,42 @@
-Summary:	Desktop full text search tool with a Qt gui
-Name:           recoll
-Version:        1.15.9
-Release:        %mkrel 1
-License:	GPLv2+
-Group:          Databases
-URL:            http://www.recoll.org/
+Name:		recoll
+Version:	1.17.3
+Release:	%mkrel 1
+Summary:	Desktop full text search tool with a qt gui
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.gz
-Patch0:		recoll-1.14.3-fix-link.patch
-BuildRequires:	libxapian-devel >= 1.0.5
-BuildRequires:	libfam-devel
-BuildRequires:	libqt4-devel
-BuildRequires:	libaspell-devel
-BuildRequires:	kdelibs4-devel
-Requires:	xapian-core
-Conflicts:	beagle
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+URL:		http://www.lesbonscomptes.com/recoll/
+Group:		Databases
+
+License:	GPL
+BuildRequires:	xapian-devel
+BuildRequires:	qt4-devel
+BuildRequires:	pkgconfig(QtWebKit)
 
 %description
-Recoll is a personal full text search tool for Unix/Linux.
-It is based on the very strong Xapian backend, for which 
-it provides an easy to use, feature-rich, easy administration, 
-QT graphical interface.
-
-%package -n kio-%{name}
-Summary:	Kioslave for %{name}
-Group:		Graphical desktop/KDE
-BuildRequires:	cmake
-BuildRequires:	kdelibs4-devel
-Requires:	%{name} = %{version}-%{release}
-
-%description -n kio-%{name}
-Kioslave for %{name} . Enables to perform querries and extract 
-results in konqueror and dolphin.
+Recoll is a personal full text search package for Linux, FreeBSD and
+other Unix systems. It is based on a very strong backend (Xapian), for
+which it provides an easy to use, feature-rich, easy administration
+interface.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
-export QMAKE=%{qt4bin}/qmake
-%configure2_5x \
-	--with-fam \
-	--with-aspell \
-	--with-inotify
-
+%configure2_5x --disable-python-module
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
+rm -rf %{buildroot}
 %makeinstall_std
-
-pushd kde/kioslave/kio_recoll
-%cmake_kde4
-%make
-%makeinstall_std
-popd
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
-%defattr(644,root,root,755)
-%doc %{_datadir}/%{name}/doc
-%attr(755,root,root) %{_bindir}/%{name}*
-%{_datadir}/applications/*.desktop
-%{_datadir}/icons/hicolor/*/apps/*.png
-%{_datadir}/pixmaps/*
+%{_bindir}/*
+%{_datadir}/applications/recoll-searchgui.desktop
+%{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_datadir}/pixmaps/%{name}.png
 %{_datadir}/%{name}
-%{_mandir}/man1/recoll*
-%{_mandir}/man5/recoll*
+%{_mandir}/man1/%{name}*.1*
+%{_mandir}/man5/%{name}*.5*
 
-%files -n kio-%{name}
-%defattr(-,root,root)
-%{_kde_libdir}/kde4/kio_recoll.so
-%{_kde_datadir}/apps/kio_recoll/help.html
-%{_kde_datadir}/apps/kio_recoll/welcome.html
-%{_kde_datadir}/kde4/services/recoll.protocol
-%{_kde_datadir}/kde4/services/recollf.protocol
