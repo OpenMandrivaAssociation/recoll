@@ -1,7 +1,14 @@
+%define		rel	1
+%if %mdkversion < 201100
+%define		release %mkrel %{rel}
+%else
+%define		release %{rel}
+%endif
+
 Name:		recoll
-Version:	1.17.3
-Release:	%mkrel 1
-Summary:	Desktop full text search tool with a qt gui
+Version:	1.18.1
+Release:	%{release}
+Summary:	Desktop full text search tool with a Qt gui
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.gz
 URL:		http://www.lesbonscomptes.com/recoll/
 Group:		Databases
@@ -10,6 +17,21 @@ License:	GPL
 BuildRequires:	xapian-devel
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(QtWebKit)
+Suggests:	perl-Image-ExifTool
+Suggests:	unrtf
+Suggests:	catdoc
+Suggests:	antiword
+Suggests:	poppler
+Suggests:	xsltproc
+Suggests:	unzip
+Suggests:	mutagen
+Suggests:	djvulibre
+Suggests:	unrar
+Suggests:	wv
+Suggests:	pstotext
+Suggests:	python-rarfile
+Suggests:	python-chm
+Suggests:	iconv, awk
 
 %description
 Recoll is a personal full text search package for Linux, FreeBSD and
