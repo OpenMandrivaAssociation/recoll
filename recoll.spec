@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 Name:		recoll
 Version:	1.19.14p2
-Release:	1
+Release:	2
 Summary:	Desktop full text search tool with a qt gui
 
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.gz
