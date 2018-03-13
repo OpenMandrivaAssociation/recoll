@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 Name:		recoll
-Version:	1.19.14p2
-Release:	2
+Version:	1.23.7
+Release:	1
 Summary:	Desktop full text search tool with a qt gui
 
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.gz
@@ -10,8 +10,14 @@ Group:		Databases
 
 License:	GPL
 BuildRequires:	xapian-devel
-BuildRequires:	qt4-devel
-BuildRequires:	pkgconfig(QtWebKit)
+BuildRequires:	cmake(ECM)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5PrintSupport)
+BuildRequires:	pkgconfig(Qt5WebKit)
+BuildRequires:	pkgconfig(Qt5WebKitWidgets)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Xml)
 
 %description
 Recoll is a personal full text search package for Linux, FreeBSD and
@@ -23,18 +29,18 @@ interface.
 %setup -q
 
 %build
+export PATH=%{_qt5_bindir}:$PATH
 %configure2_5x --disable-python-module
 %make
 
 %install
 %makeinstall_std
 
-%clean
-
 %files
 %{_bindir}/*
 %{_datadir}/applications/recoll-searchgui.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_libdir}/recoll
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/%{name}
 %{_datadir}/appdata/*
