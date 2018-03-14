@@ -9,6 +9,7 @@ URL:		http://www.lesbonscomptes.com/recoll/
 Group:		Databases
 
 License:	GPL
+BuildRequires:	gettext-devel
 BuildRequires:	xapian-devel
 BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(Qt5Core)
