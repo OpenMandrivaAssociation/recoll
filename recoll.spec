@@ -11,6 +11,7 @@ Group:		Databases
 License:	GPL
 BuildRequires:	gettext-devel
 BuildRequires:	xapian-devel
+BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  bison
 BuildRequires:  aspell-devel
