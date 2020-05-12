@@ -12,7 +12,7 @@ License:	GPL
 BuildRequires:	gettext-devel
 BuildRequires:	xapian-devel
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  bison-devel-static
+BuildRequires:  bison
 BuildRequires:  aspell-devel
 BuildRequires:  chmlib-devel
 BuildRequires:	cmake(ECM)
@@ -47,7 +47,7 @@ Recommends:     python3dist(mutagen)
 Recommends:     perl-Image-ExifTool
 Recommends:     poppler
 Recommends:     pstotext
-Recommends:     python3
+Recommends:     python
 Recommends:     python3dist(pylzma)
 Recommends:     python3dist(rarfile)
 Recommends:     texlive
@@ -83,18 +83,16 @@ for indexing various file types by recoll:
 
 #--------------------------------------------------------
 
-%package -n python3-%{name}
+%package -n python-%{name}
 Summary:        Python 3 extension module for recoll
 Group:          Development/Python
 
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(python)
 BuildRequires:  python3dist(setuptools)
-Requires:       python3
+Requires:       python
 Requires:       %{name} >= %{version}-%{release}
 
-Obsoletes:      python2-recoll < 1.25.19-2
-
-%description -n python3-%{name}
+%description -n python-%{name}
 Recoll Python 3 programming interface, for searching and indexing.
 
 #--------------------------------------------------------
@@ -103,7 +101,7 @@ Recoll Python 3 programming interface, for searching and indexing.
 Summary:        KIO slave for %{name}
 Group:          Graphical desktop/KDE
 
-BuildRequires:  kf5-macros
+BuildRequires:  cmake(ECM)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5AkonadiMime)
 
@@ -123,7 +121,7 @@ BuildArch:      noarch
 
 Requires:       %{name} >= %{version}-%{release}
 Requires:       %{name}-extra >= %{version}-%{release}
-Requires:       python3-%{name} >= %{version}-%{release}
+Requires:       python-%{name} >= %{version}-%{release}
 Requires:       kio-%{name} >= %{version}-%{release}
 
 %description -n %{name}-full
@@ -188,11 +186,11 @@ popd
 #none
 
 #-------------------------------------------------------
-%files -n python3-%{name}
-%{python3_sitearch}/recoll/
-%{python3_sitearch}/recollchm/
-%{python3_sitearch}/Recoll-1.0-py%{python3_version}.egg-info
-%{python3_sitearch}/recollchm-*-py%{python3_version}.egg-info
+%files -n python-%{name}
+%{python_sitearch}/recoll/
+%{python_sitearch}/recollchm/
+%{python_sitearch}/Recoll-1.0-py%{python_version}.egg-info
+%{python_sitearch}/recollchm-*-py%{python_version}.egg-info
 
 #-------------------------------------------------------
 %files -n kio-%{name}
