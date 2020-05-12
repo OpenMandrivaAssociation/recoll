@@ -159,8 +159,8 @@ This packages provides the complete recoll installation:
 
 pushd kde/kioslave/kio_recoll
 %cmake
-%cmake_build
-%cmake_install
+%make_build
+%make_install -C build
 popd
 
 # Add translations tags
