@@ -1,0 +1,36 @@
+diff --git a/Makefile.in b/Makefile.in
+index c4eae29..4d39e79 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -2397,13 +2397,13 @@ PicStatic: $(librecoll_la_OBJECTS)
+ @MAKEPYTHON_TRUE@clean-local:: recollpython-clean
+ @MAKEPYTHON_TRUE@recollpython: librecoll.la
+ @MAKEPYTHON_TRUE@	(cd python/recoll; set -x; \
+-@MAKEPYTHON_TRUE@        for v in 2 3;do test -n "`which python$${v}`" && \
++@MAKEPYTHON_TRUE@        for v in 3;do test -n "`which python$${v}`" && \
+ @MAKEPYTHON_TRUE@        libdir=$(libdir) python$${v} setup.py build; \
+ @MAKEPYTHON_TRUE@        done \
+ @MAKEPYTHON_TRUE@        )
+ @MAKEPYTHON_TRUE@recollpython-install:
+ @MAKEPYTHON_TRUE@	(cd python/recoll; set -x; \
+-@MAKEPYTHON_TRUE@        for v in 2 3;do test -n "`which python$${v}`" && \
++@MAKEPYTHON_TRUE@        for v in 3;do test -n "`which python$${v}`" && \
+ @MAKEPYTHON_TRUE@        python$${v} setup.py install \
+ @MAKEPYTHON_TRUE@         --prefix=${prefix} --root=$${DESTDIR:-/} $(OPTSFORPYTHON); \
+ @MAKEPYTHON_TRUE@        done; \
+@@ -2422,13 +2422,13 @@ PicStatic: $(librecoll_la_OBJECTS)
+ @MAKEPYTHONCHM_TRUE@clean-local:: rclpychm-clean
+ @MAKEPYTHONCHM_TRUE@rclpychm:
+ @MAKEPYTHONCHM_TRUE@	(cd python/pychm; set -x; \
+-@MAKEPYTHONCHM_TRUE@        for v in 2 3;do \
++@MAKEPYTHONCHM_TRUE@        for v in 3;do \
+ @MAKEPYTHONCHM_TRUE@        test -n "`which python$${v}`" && python$${v} setup.py build;\
+ @MAKEPYTHONCHM_TRUE@        done \
+ @MAKEPYTHONCHM_TRUE@        )
+ @MAKEPYTHONCHM_TRUE@rclpychm-install:
+ @MAKEPYTHONCHM_TRUE@	(cd python/pychm; set -x; \
+-@MAKEPYTHONCHM_TRUE@        for v in 2 3;do test -n "`which python$${v}`" && \
++@MAKEPYTHONCHM_TRUE@        for v in 3;do test -n "`which python$${v}`" && \
+ @MAKEPYTHONCHM_TRUE@        python$${v} setup.py install \
+ @MAKEPYTHONCHM_TRUE@         --prefix=${prefix} --root=$${DESTDIR:-/} $(OPTSFORPYTHON); \
+ @MAKEPYTHONCHM_TRUE@        done \
