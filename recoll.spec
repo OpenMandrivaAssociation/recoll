@@ -1,4 +1,7 @@
 %define debug_package %{nil}
+%define _disable_lto 1
+%define _disable_ld_no_undefined 1
+
 Name:		recoll
 Version:	1.27.0
 Release:	1
