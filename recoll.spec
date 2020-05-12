@@ -6,6 +6,7 @@ Summary:	Desktop full text search tool with a qt gui
 
 Source0:	http://www.lesbonscomptes.com/recoll/%{name}-%{version}.tar.gz
 URL:		http://www.lesbonscomptes.com/recoll/
+Patch0:     recoll-1.25.20-py3-only.patch
 Group:		Databases
 
 License:	GPL
