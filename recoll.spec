@@ -3,7 +3,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		recoll
-Version:	1.27.0
+Version:	1.28.5
 Release:	1
 Summary:	Desktop full text search tool with a qt gui
 
