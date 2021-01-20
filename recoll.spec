@@ -13,6 +13,8 @@ Patch0:     recoll-1.25.20-py3-only.patch
 Group:		Databases
 
 License:	GPL
+BuildRequires:  qmake5
+BuildRequires:  cmake
 BuildRequires:	gettext-devel
 BuildRequires:	xapian-devel
 BuildRequires:  libxslt-devel
