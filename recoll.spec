@@ -13,6 +13,10 @@ Patch0:     recoll-1.25.20-py3-only.patch
 Group:		Databases
 
 License:	GPL
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:  qmake5
 BuildRequires:  cmake
 BuildRequires:	gettext-devel
